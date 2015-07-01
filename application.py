@@ -50,4 +50,4 @@ class WebApplication(Application):
             "static_path": "static",
             "debug": False,
         }
-        Application.__init__(self, [(r"/test", TestHandler), (r"/(.*)", IndexHandler)], **settings)
+        Application.__init__(self, [(r"/login", LoginHandler), (r"/(.*)", IndexHandler)], **settings)

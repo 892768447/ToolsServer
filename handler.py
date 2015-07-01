@@ -68,26 +68,28 @@ class BaseHandler(RequestHandler):
         # self.set_header("Content-Type", "application/text/plain; charset=utf-8")
         super(BaseHandler, self).finish(chunk)
 
-class TestHandler(BaseHandler):
+class LoginHandler(BaseHandler):
 
     def get(self, *args, **kwargs):
         self.finish('''<html>
     <head>
-        <title>测试</title>
+        <title>登录测试</title>
     </head>
     <body>
         <center>
-            <form action="/test" method="post" >
-                <input type="text" name="test" value="" />
-                <input type="submit" value="提交" />
+            <form action="/login" method="post" >
+                #账号: <input type="text" name="username" value="" /><br />
+                #密码: <input type="password" name="password" value="" /><br />
+                <input type="submit" value="登录" />
             </form>
         </center>
     </body>
 </html>''')
 
     def post(self, *args, **kwargs):
-        test = self.get_argument("test")
-        self.finish(test)
+        username = self.get_argument("username")
+        password = self.get_argument("password")
+        self.finish("username: " + username + " password: " + password)
 
 class IndexHandler(BaseHandler):
 
